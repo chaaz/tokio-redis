@@ -105,6 +105,52 @@ impl ClientHandle {
 
         self.call(cmd)
     }
+
+    /// Increments an integer value from its current value, or from 0 if
+    /// it doesn't exist.
+    pub fn incr<K: ToRedisArgs>(&mut self, key: K) -> Response {
+        let mut cmd = Cmd::new();
+        cmd.arg("INCR").arg(key);
+
+        self.call(cmd)
+    }
+
+    /// Sets the value of a key, but only if it doesn't already exist.
+    pub fn setnx<K: ToRedisArgs, V: ToRedisArgs>(&mut self, key: K, value: V) -> Response {
+        let mut cmd = Cmd::new();
+        cmd.arg("SETNX").arg(key).arg(value);
+
+        self.call(cmd)
+    }
+
+    pub fn del<K: ToRedisArgs>(&mut self, key: K) -> Response {
+        let mut cmd = Cmd::new();
+        cmd.arg("DEL").arg(key);
+
+        self.call(cmd)
+    }
+
+    pub fn sadd<K: ToRedisArgs, V: ToRedisArgs>(&mut self, key: K, value: V) -> Response {
+        let mut cmd = Cmd::new();
+        cmd.arg("SADD").arg(key).arg(value);
+
+        self.call(cmd)
+    }
+
+    pub fn srem<K: ToRedisArgs, V: ToRedisArgs>(&mut self, key: K, value: V) -> Response {
+        let mut cmd = Cmd::new();
+        cmd.arg("SREM").arg(key).arg(value);
+
+        self.call(cmd)
+    }
+
+    pub fn smembers<K: ToRedisArgs>(&mut self, key: K) -> Response {
+        let mut cmd = Cmd::new();
+        cmd.arg("SMEMBERS").arg(key);
+
+        self.call(cmd)
+    }
+
 }
 
 impl Service for ClientHandle {
