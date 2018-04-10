@@ -1,6 +1,6 @@
 [package]
 name = "tokio-redis"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Carl Lerche <me@carllerche.com>", "Armin Ronacher <armin.ronacher@active-4.com>"]
 
 [dependencies]
