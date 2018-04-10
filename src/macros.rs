@@ -1,10 +1,10 @@
 #![macro_use]
 
-macro_rules! ensure {
-    ($expr:expr, $err_result:expr) => (
-        if !($expr) { return $err_result; }
-    )
-}
+// macro_rules! ensure {
+//     ($expr:expr, $err_result:expr) => (
+//         if !($expr) { return $err_result; }
+//     )
+// }
 
 macro_rules! fail {
     ($expr:expr) => (

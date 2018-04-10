@@ -151,6 +151,13 @@ impl ClientHandle {
         self.call(cmd)
     }
 
+    /// Determine if a key exists.
+    pub fn exists<K: ToRedisArgs>(&mut self, key: K) -> Response {
+        let mut cmd = Cmd::new();
+        cmd.arg("EXISTS").arg(key);
+
+        self.call(cmd)
+    }
 }
 
 impl Service for ClientHandle {
